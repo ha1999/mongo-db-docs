@@ -44,11 +44,11 @@
 
 - Create a capped collection
   > You must create capped colllections explicitly using the `db.createCollection()` method, which is a `mongosh` helper for create command. When creating a capped collection you must specify the maximun `size of the collection in bytes`, which mongodb will pre-allocated for the collection. The size of capped collection includes a samll amount of space for interval overhead.
-  ```mongodb
+  ```python
   db.createCollection( "log", { capped: true, size: 100000 } )
   ```
 - Additionally, you may also specify a maximum number of documents for the collection using the max field as in the following document:
-  ```mongodb
+  ```python
   db.createCollection("log", { capped : true, size : 5242880, max : 5000 } )
   ```
 
@@ -57,22 +57,22 @@
 - Query a capped collection
   > If you perform a find() on a capped collection with no ordering specified, MongoDB guarantees that the ordering of results is the same as the insertion order.
   > To retrieve documents in reverse insertion order, issue find() along with the sort() method with the $natural parameter set to -1, as shown in the following example:
-  ```mongodb
+  ```python
   db.cappedCollection.find().sort( { $natural: -1 } )    To retrieve documents in reverse insertion order, issue find() along with the sort() method with the $natural parameter set to -1, as shown in the following example:
   ```
 - Check if a collection is capped collection
-  ```mongodb
+  ```python
   db.collection.isCapped()
   ```
 - Convert a collection to capped
-  ```mongodb
+  ```python
   db.runCommand({"convertToCapped": "mycoll", size: 100000});
   ```
 - Change the capped collection's size
-  ```mongodb
+  ```python
   db.runCommand( { collMod: "log", cappedSize: 100000 } )
   ```
 - Change the maximum number of documents in a capped collection
-  ```mongodb
+  ```python
   db.runCommand( { collMod: "log", cappedMax: 500 } )
   ```

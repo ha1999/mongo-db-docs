@@ -17,7 +17,7 @@
 
 - Create collection ${\color{green}bakeSales}$
 
-    ```mongodb
+    ```python
     db.bakesales.insertMany( [
     { date: new ISODate("2018-12-01"), item: "Cake - Chocolate", quantity: 2, amount: new NumberDecimal("60") },
     { date: new ISODate("2018-12-02"), item: "Cake - Peanut Butter", quantity: 5, amount: new NumberDecimal("90") },
@@ -46,7 +46,7 @@
 - Define the On-demand materialized view
   > The following updateMonthlySales function defines a monthlybakesales materialized view that contains the cumulative monthly sales information.
 
-    ```mongodb
+    ```python
     updateMonthlySales = function(startDate) {
     db.bakesales.aggregate( [
         { $match: { date: { $gte: startDate } } },
@@ -57,14 +57,14 @@
     ```
 
 - Perform Initial Run
-  ```mongodb
+  ```python
   updateMonthlySales(new ISODate("1970-01-01"));
   ```
-  ```mongodb
+  ```python
   { "_id" : "2018-12", "sales_quantity" : 41, "sales_amount" : NumberDecimal("506") }
   { "_id" : "2019-01", "sales_quantity" : 86, "sales_amount" : NumberDecimal("896") }
   ```
 - Refresh materialize view
-  ```mongodb
+  ```python
   updateMonthlySales(new ISODate("2019-01-01"));
   ```

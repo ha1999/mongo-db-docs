@@ -14,7 +14,7 @@ db.places.insertMany([
 ```
 
 ## 2. Create a standard view with specifying collation
-```mongodb
+```python
 db.createView(
    "placesView",
    "places",
@@ -24,6 +24,6 @@ db.createView(
 ```
 
 ## 3. Query on a view with specific collation
-```mongodb
+```python
 db.placesView.countDocuments( { category: "cafe" } )
 ```

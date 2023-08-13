@@ -3,7 +3,7 @@
 
 ## 1. Documents structure
  - MongoDB documents are composed of field-and-value pairs and have the following structure:
-    ```mongodb
+    ```python
     {
         field1: value1,
         field2: value2,
@@ -21,10 +21,10 @@
 ## 3. Dot notation
 > MongoDB uses the dot notation to access the elements of an array and to access the fields of an embedded document.
 - Arrays
-    ```mongodb
+    ```python
     "<array>.<index>"
     ```
-    ```mongodb
+    ```python
     {
         ...
         contribs: [ "Turing machine", "Turing test", "Turingery" ],
@@ -33,10 +33,10 @@
     ```
     To specify the third element in the contribs array, use the dot notation `"contribs.2"`.
 - Embedded documents
-  ```mongodb
+  ```python
   "<embedded document>.<field>"
   ```
-  ```mongodb
+  ```python
   {
     ...
     name: { first: "Alan", last: "Turing" },

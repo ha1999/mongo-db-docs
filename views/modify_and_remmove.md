@@ -1,7 +1,7 @@
 # Modify and remove a exist view
 
 ## 1. Remove a view
-```mongodb
+```python
 db.productView01.drop()
 ```
 
@@ -11,7 +11,7 @@ db.productView01.drop()
   * Use the `collMod` command
 
 ##### 2.1. Drop and recreate view
-```mongodb
+```python
 db.lowStock.drop()
 db.createView(
    "lowStock",
@@ -20,7 +20,7 @@ db.createView(
 )
 ```
 ##### 2.2. Use `collMod` command to modify a view
-```mongodb
+```python
 db.runCommand( {
    collMod: "lowStock",
    viewOn: "products",

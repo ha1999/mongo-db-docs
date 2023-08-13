@@ -5,7 +5,7 @@ Applications can query the view without having to construct or maintain complex 
 ```
 ## 1. Create two collections for joinning
 
-```mongodb
+```python
 db.inventory.insertMany( [
    { prodId: 100, price: 20, quantity: 125 },
    { prodId: 101, price: 10, quantity: 234 },
@@ -27,7 +27,7 @@ db.orders.insertMany( [
 ```
 
 ## 2. Create a joined view
-```mongodb
+```python
 db.createView( "sales", "orders", [
    {
       $lookup:
@@ -53,7 +53,7 @@ db.createView( "sales", "orders", [
 ```
 
 ## 3. Query the joined view
-```mongodb
+```python
 db.sales.aggregate( [
    {
       $group:
@@ -66,7 +66,7 @@ db.sales.aggregate( [
 ```
 
 * The result is:
-  ```mongodb
+  ```python
   [
     { _id: 102, amountSold: 90 },
     { _id: 101, amountSold: 150 },

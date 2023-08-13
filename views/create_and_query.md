@@ -5,7 +5,7 @@
 We are using two following syntax to create a view in MongoDB
 
 - [db.createCollection()](https://www.mongodb.com/docs/manual/reference/method/db.createCollection/#mongodb-method-db.createCollection)
-  ```mongodb
+  ```python
   db.createCollection(
   "<viewName>",
       {
@@ -17,7 +17,7 @@ We are using two following syntax to create a view in MongoDB
   ```
 - [db.createView()](https://www.mongodb.com/docs/manual/reference/method/db.createView/#mongodb-method-db.createView)
 
-  ```mongodb
+  ```python
   db.createView(
       "<viewName>",
       "<source>",
@@ -46,7 +46,7 @@ Some operations are not available with views:
 
 - Create a students collection to use for this example:
 
-  ```mongodb
+  ```python
   db.students.insertMany( [
       { sID: 22001, name: "Alex", year: 1, score: 4.0 },
       { sID: 21001, name: "bernie", year: 2, score: 3.7 },
@@ -61,7 +61,7 @@ Some operations are not available with views:
 
 - Use db.createView() to create a view
 
-  ```mongodb
+  ```python
   db.createView(
       "firstYears",
       "students",
@@ -71,7 +71,7 @@ Some operations are not available with views:
 
 - Query the View
 
-  ```mongodb
+  ```python
   db.graduateStudents.aggregate(
   [
       { $sort: { name: 1 } },
@@ -80,7 +80,7 @@ Some operations are not available with views:
   )
   ```
 
-  ```mongodb
+  ```python
   db.firstYears.find({}, { _id: 0 } )
   ```
 
